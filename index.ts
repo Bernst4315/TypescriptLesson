@@ -1,4 +1,5 @@
 type Pizza = {
+    id: number
     name: string,
     price: number, 
 }
@@ -6,14 +7,14 @@ type Pizza = {
 type Order = {
     id: number //consistancy is good, but omitted "," to show it is optioal 
     pizza: Pizza
-    status: string
+    status: "ordered" | "completed"
 }
 
-const menu = [
-    { name: "Margherita", price: 8 },
-    { name: "Pepperoni", price: 10 },
-    { name: "Hawaiian", price: 10 },
-    { name: "Veggie", price: 9 },
+const menu: Array<Pizza> = [
+    { id: 1, name: "Margherita", price: 8 },
+    { id: 2, name: "Pepperoni", price: 10 },
+    { id: 3, name: "Hawaiian", price: 10 },
+    { id: 4, name: "Veggie", price: 9 },
 ]
 
 let cashInRegister = 100
@@ -47,9 +48,9 @@ function completeOrder(orderId: number) {
     return order
 }
 
-addNewPizza({ name: "Chicken Bacon Ranch", price: 12 })
-addNewPizza({ name: "BBQ Chicken", price: 12 })
-addNewPizza({ name: "Spicy Sausage", price: 11 })
+addNewPizza({ id: 5, name: "Chicken Bacon Ranch", price: 12 })
+addNewPizza({ id: 6, name: "BBQ Chicken", price: 12 })
+addNewPizza({ id: 7, name: "Spicy Sausage", price: 11 })
 
 placeOrder("Chicken Bacon Ranch")
 completeOrder(1)
