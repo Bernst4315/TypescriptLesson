@@ -58,3 +58,19 @@ const arr2: Array<string> = ["1", "f", 7]
 
 const people: Person[] = [person1, person2] //declare an array of objs, could use alt method as well
 const people: Array<Person> = [person1,person2]
+
+//literals
+
+let myName: "Bob" = "Bobby" //this value must be Bob, eventhough it's a let var
+const myName2: "Bob" = "Bob" //this makes sense since it's a const
+
+//unions
+
+//uses literals
+
+type UserRole = "guest" | "member" | "admin" //this is how to make a union. Var can only be theses three options 
+
+let userRole: UserRole = "member"
+userRole = "guest"
+userRole = "admin"
+userRole = "hacker" //this falls outside of the union
