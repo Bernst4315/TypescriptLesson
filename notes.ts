@@ -45,3 +45,16 @@ let person2: Person = {
     age: 66,
     isstudent: false //error shows up since assign custom type person
 }
+
+//Arrays
+
+const arr: number[] = [0,1,"sd"] //this has to be an array of #'s
+const arr2: string[] = ["1", "f", 7] //must be array of strs
+
+//alt
+
+const arr: Array<number> = [0,1,"sd"] 
+const arr2: Array<string> = ["1", "f", 7] 
+
+const people: Person[] = [person1, person2] //declare an array of objs, could use alt method as well
+const people: Array<Person> = [person1,person2]
