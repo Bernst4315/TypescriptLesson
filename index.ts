@@ -3,6 +3,12 @@ type Pizza = {
     price: number, 
 }
 
+type Order = {
+    id: number //consistancy is good, but omitted "," to show it is optioal 
+    pizza: Pizza
+    status: string
+}
+
 const menu = [
     { name: "Margherita", price: 8 },
     { name: "Pepperoni", price: 10 },
@@ -25,7 +31,7 @@ function placeOrder(pizzaName: string) {
         return
     }
     cashInRegister += selectedPizza.price //selectedPizza could be undefined. added if statment to prevent that
-    const newOrder = { id: nextOrderId++, pizza: selectedPizza, status: "ordered" }
+    const newOrder: Order = { id: nextOrderId++, pizza: selectedPizza, status: "ordered" }
     orderQueue.push(newOrder)
     return newOrder
 }
