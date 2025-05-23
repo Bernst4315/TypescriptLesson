@@ -18,7 +18,7 @@ const menu = [
 
 let cashInRegister = 100
 let nextOrderId = 1
-const orderQueue = []
+const orderQueue: Array<Order> = []
 
 function addNewPizza(pizzaObj: Pizza) {
     menu.push(pizzaObj)
@@ -38,6 +38,11 @@ function placeOrder(pizzaName: string) {
 
 function completeOrder(orderId: number) {
     const order = orderQueue.find(order => order.id === orderId)
+    if(!order){
+        // console.log("Order cannot be found")
+        // return
+        throw new Error("Order cannot be found") // a way to handle errors
+    }
     order.status = "completed"
     return order
 }
