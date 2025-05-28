@@ -48,6 +48,16 @@ function completeOrder(orderId: number) {
     return order
 }
 
+function getPizzaDetails(identifier: string | number){
+    if(typeof identifier === "string"){
+        return menu.find(pizza => pizza.name.toLowerCase() === identifier.toLowerCase())
+    }else if (typeof identifier === "number") {
+        return menu.find(pizza => pizza.id === identifier)
+    } else {
+        throw new TypeError(`indentifier must be a number or string`)
+    }
+}
+
 addNewPizza({ id: 5, name: "Chicken Bacon Ranch", price: 12 })
 addNewPizza({ id: 6, name: "BBQ Chicken", price: 12 })
 addNewPizza({ id: 7, name: "Spicy Sausage", price: 11 })
