@@ -74,3 +74,11 @@ let userRole: UserRole = "member"
 userRole = "guest"
 userRole = "admin"
 userRole = "hacker" //this falls outside of the union
+
+function fetchUserDetails(username: string): User { //this tells what data the function is returning. in this case a User obj
+    const user = users.find(user => user.username === username)
+    if (!user) {
+        throw new Error(`User with username ${username} not found`)
+    }
+    return user
+}

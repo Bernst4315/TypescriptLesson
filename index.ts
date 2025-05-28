@@ -21,11 +21,12 @@ let cashInRegister = 100
 let nextOrderId = 1
 const orderQueue: Array<Order> = []
 
-function addNewPizza(pizzaObj: Pizza) {
+function addNewPizza(pizzaObj: Pizza): void { //void is here, don't get a value from this function. 
+// Void clarifies/makes explicit that this function is not going to return a value
     menu.push(pizzaObj)
 }
 
-function placeOrder(pizzaName: string) {
+function placeOrder(pizzaName: string): Order | undefined {
     const selectedPizza = menu.find(pizzaObj => pizzaObj.name === pizzaName)
         if (!selectedPizza) {
         console.error(`${pizzaName} does not exist in the menu`)
@@ -37,7 +38,7 @@ function placeOrder(pizzaName: string) {
     return newOrder
 }
 
-function completeOrder(orderId: number) {
+function completeOrder(orderId: number): Order | undefined{
     const order = orderQueue.find(order => order.id === orderId)
     if(!order){
         // console.log("Order cannot be found")
