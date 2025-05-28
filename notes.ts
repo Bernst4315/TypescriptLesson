@@ -82,3 +82,7 @@ function fetchUserDetails(username: string): User { //this tells what data the f
     }
     return user
 }
+
+
+let value : any = 1 //any essentially turns off typescript
+//could be used as a tempory quick fix after turning a js file to ts
