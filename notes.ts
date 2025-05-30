@@ -86,3 +86,57 @@ function fetchUserDetails(username: string): User { //this tells what data the f
 
 let value : any = 1 //any essentially turns off typescript
 //could be used as a tempory quick fix after turning a js file to ts
+
+type User = {
+    id: number
+    username: string
+    role: "member" | "contributor" | "admin"
+}
+
+type updatedUser = Partial<User> //this enable to update part of obj, w/out need to specify each prop type
+//sets all props to optional to allow for seemless updating 
+
+const users: User[] = [
+    { id: 1, username: "john_doe", role: "member" },
+    { id: 2, username: "jane_smith", role: "contributor" },
+    { id: 3, username: "alice_jones", role: "admin" },
+    { id: 4, username: "charlie_brown", role: "member" },
+];
+
+function updateUser(id: number, updates: updatedUser) {
+    // Find the user in the array by the id
+    // Use Object.assign to update the found user in place. 
+    // Check MDN if you need help with using Object.assign
+
+    const getUser = users.find(user => user.id === id); 
+    if(!getUser){
+        console.error("user not found")
+        return
+    }
+    Object.assign(getUser, updates)
+
+    
+    
+}
+
+// Example updates:
+updateUser(1, { username: "new_john_doe" });
+updateUser(4, { role: "contributor" });
+
+console.log(users)
+
+function addNewUser(newUser: Omit<User, "id">): User { //this allows the entry to not have a prop id,
+    //when creating or updating something id doesn't need to be changed and backend should auto handle id creation 
+    //no need to create id prop
+  
+
+    const user: User = {id: 1, ...newUser}
+    users.push(user)
+
+    return(user)
+}
+
+// example usage:
+addNewUser({ username: "joe_schmoe", role: "member" })
+
+console.log(users)

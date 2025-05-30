@@ -23,10 +23,11 @@ const menu: Array<Pizza> = [
 ]
 
 
-function addNewPizza(pizzaObj: Pizza): void { //void is here, don't get a value from this function. 
+function addNewPizza(pizzaObj: Omit<Pizza, "id">): Pizza { //void is here, don't get a value from this function. 
 // Void clarifies/makes explicit that this function is not going to return a value
-    pizzaObj.id = pizzaId++
-    menu.push(pizzaObj)
+    const newPizza: Pizza = {id: pizzaId++, ...pizzaObj}
+    menu.push(newPizza)
+    return (newPizza)
 }
 
 function placeOrder(pizzaName: string): Order | undefined {
@@ -62,9 +63,9 @@ function getPizzaDetails(identifier: string | number): Pizza | undefined{
     }
 }
 
-addNewPizza({ id: pizzaId++, name: "Chicken Bacon Ranch", price: 12 })
-addNewPizza({ id: pizzaId++, name: "BBQ Chicken", price: 12 })
-addNewPizza({ id: pizzaId++, name: "Spicy Sausage", price: 11 })
+addNewPizza({ name: "Chicken Bacon Ranch", price: 12 })
+addNewPizza({ name: "BBQ Chicken", price: 12 })
+addNewPizza({ name: "Spicy Sausage", price: 11 })
 
 placeOrder("Chicken Bacon Ranch")
 completeOrder(1)
