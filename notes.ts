@@ -140,3 +140,23 @@ function addNewUser(newUser: Omit<User, "id">): User { //this allows the entry t
 addNewUser({ username: "joe_schmoe", role: "member" })
 
 console.log(users)
+
+/*
+Generics
+
+like a parameter value in a function
+gives ts some flexibility
+*/
+
+const gameScores = [14, 21, 33, 42, 59]
+const favoriteThings = ["raindrops on roses", "whiskers on kittens", "bright copper kettles", "warm woolen mittens"];
+const voters = [{ name: "Alice", age: 42 }, { name: "Bob", age: 77 }]
+
+function getLastItem<Type>(array: Type[]): Type { //here's the placeholder, could also use T
+    //can use arrays of multiple types i.e. number[], str[], obj[]
+    return array[array.length - 1]
+}
+
+console.log(getLastItem(gameScores))
+console.log(getLastItem(favoriteThings))
+console.log(getLastItem(voters))
